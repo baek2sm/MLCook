@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 from sklearn.datasets import load_iris
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
+
 
 # 분류용 샘플 데이터 불러오기
 iris = load_iris()
@@ -18,9 +19,9 @@ X_train_std = std.fit_transform(X_train)
 X_test_std = std.transform(X_test)
 
 # KNN + 그리드서치로 모델 학습
-knn = KNeighborsClassifier()
-param_grid = [{'n_neighbors': range(3, 10)}]
-gs = GridSearchCV(estimator=knn, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
+rf = RandomForestClassifier(random_state=1)
+param_grid = [{'n_estimators': range(5, 50, 10), 'max_depth': range(3, 5)}]
+gs = GridSearchCV(estimator=rf, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train_std, y_train)
 
 # 그리드서치 학습 결과 출력
