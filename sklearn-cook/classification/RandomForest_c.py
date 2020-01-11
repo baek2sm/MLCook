@@ -19,7 +19,7 @@ X_test_std = std.transform(X_test)
 
 # 랜덤포레스트 + 그리드서치로 모델 학습
 rf = RandomForestClassifier(random_state=1)
-param_grid = [{'n_estimators': range(5, 50, 10), 'max_depth': range(3, 5)}]
+param_grid = [{'n_estimators': range(5, 50, 10), 'max_features': range(1, 4), 'max_depth': range(3, 5)}]
 gs = GridSearchCV(estimator=rf, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train_std, y_train)
 
