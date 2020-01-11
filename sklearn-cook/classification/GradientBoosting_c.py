@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
 
+import numpy as np
+
 # 분류용 샘플 데이터 불러오기
 iris = load_iris()
 X, y, labels = iris.data, iris.target, iris.target_names
@@ -19,7 +21,8 @@ X_test_std = std.transform(X_test)
 
 # 그래디언트부스팅 + 그리드서치로 모델 학습
 gb = GradientBoostingClassifier(random_state=1)
-param_grid = [{'n_estimators': range(5, 50, 10), 'max_depth': range(3, 5)}]
+param_grid = [{'n_estimators': range(5, 50, 10), 'max_features': range(1, 4),
+               'max_depth': range(3, 5), 'learning_rate': np.linspace(0.1, 1, 10)}]
 gs = GridSearchCV(estimator=gb, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train_std, y_train)
 
