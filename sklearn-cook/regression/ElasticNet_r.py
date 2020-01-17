@@ -21,7 +21,7 @@ X_test_std = std.transform(X_test)
 
 # 엘라스틱넷 + 그리드서치로 모델 학습
 gb = ElasticNet(max_iter=100000)
-param_grid = [{'alpha': np.linspace(0.01, 1.0, 100)}]
+param_grid = [{'l1_ratio': np.linspace(0.01, 1.0, 100), 'alpha': np.linspace(0.01, 1.0, 100)}]
 gs = GridSearchCV(estimator=gb, param_grid=param_grid, scoring='r2', cv=5, n_jobs=-1)
 gs.fit(X_train_std, y_train)
 
