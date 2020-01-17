@@ -19,7 +19,7 @@ std = StandardScaler()
 X_train_std = std.fit_transform(X_train)
 X_test_std = std.transform(X_test)
 
-# 엘라스틱넷 + 그리드서치로 모델 학습
+# 릿지 + 그리드서치로 모델 학습
 rg = Ridge(max_iter=100000)
 param_grid = [{'alpha': np.linspace(0.01, 1.0, 100)}]
 gs = GridSearchCV(estimator=rg, param_grid=param_grid, scoring='r2', cv=5, n_jobs=-1)
