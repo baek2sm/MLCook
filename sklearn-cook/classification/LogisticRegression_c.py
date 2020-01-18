@@ -27,14 +27,14 @@ gs.fit(X_train_std, y_train)
 
 # 그리드서치 학습 결과 출력
 print('베스트 하이퍼 파라미터: {0}'.format(gs.best_params_))
-print('베스트 하이퍼 파라미터 일 때 Score 점수: {0:.2f}'.format(gs.best_score_))
+print('베스트 하이퍼 파라미터 일 때 정확도: {0:.2f}'.format(gs.best_score_))
 
 # 최적화 모델 추출
 model = gs.best_estimator_
 
-# 테스트세트 R^2 점수 출력
+# 테스트세트 정확도 출력
 score = model.score(X_test_std, y_test)
-print('테스트세트에서의 Score 점수: {0:.2f}'.format(score))
+print('테스트세트에서의 정확도: {0:.2f}'.format(score))
 
 # 테스트세트 예측 결과 샘플 출력
 predicted_y = model.predict(X_test_std)
