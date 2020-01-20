@@ -20,8 +20,8 @@ X_train_std = scaler.fit_transform(X_train)
 X_test_std = scaler.transform(X_test)
 
 # 로지스틱 회귀 + 그리드서치로 모델 학습
-lg = LogisticRegression()
-param_grid = [{'C': np.linspace(0.1, 10, 100)}]
+lg = LogisticRegression(solver='liblinear')
+param_grid = [{'C': np.linspace(0.1, 10, 100), 'penalty': ['l1', 'l2']}]
 gs = GridSearchCV(estimator=lg, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train_std, y_train)
 
