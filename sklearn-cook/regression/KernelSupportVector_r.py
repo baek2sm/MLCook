@@ -15,7 +15,7 @@ X, y = boston.data, boston.target
 # 학습/테스트 데이터셋 분할
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
 
-# 데이터 전처리(표준화, Standardization)
+# 데이터 전처리
 std = StandardScaler()
 X_train_std = std.fit_transform(X_train)
 X_test_std = std.transform(X_test)
