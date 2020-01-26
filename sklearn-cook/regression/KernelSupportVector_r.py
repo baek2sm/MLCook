@@ -20,7 +20,7 @@ std = StandardScaler()
 X_train_std = std.fit_transform(X_train)
 X_test_std = std.transform(X_test)
 
-# 주성분 추출
+# 주성분 분석
 pca = PCA(n_components=10)
 X_train_pca = pca.fit_transform(X_train_std)
 X_test_pca = pca.transform(X_test_std)
