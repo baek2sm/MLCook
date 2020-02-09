@@ -9,7 +9,7 @@ X, y = iris.data, iris.target
 
 # 랜덤 포레스트를 K겹 교차 검증에 사용하기
 rf = RandomForestClassifier(random_state=1)
-score_list = cross_val_score(rf, X, y)
+score_list = cross_val_score(rf, X, y, cv=3)
 
 # 결과 출력하기
 result = list(map(lambda x: '{score:.2f}'.format(score=x), score_list))
